@@ -1,35 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <title>Grocery List</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
-  <div class="card" id="card">
-    <div class="mood-box" id="moodBox">
-   <img id="sleep" src="assets/sleep.png" alt="sleeping" class="mood-img shown">
-   <img id="angry" src="assets/angry.png" alt="angry" class="mood-img">
-   <img id="happy" src="assets/happy.png" alt="happy" class="mood-img">
+  <div class="container">
+    <div class="card" id="card">
+      <div class="mood-box" id="moodBox">
+        <img id="sleep" src="assets/sleep.png" alt="sleeping" class="mood-img shown">
+        <img id="angry" src="assets/angry.png" alt="angry" class="mood-img">
+        <img id="happy" src="assets/happy.png" alt="happy" class="mood-img">
+      </div>
+
+      <div class="top">
+        <h1 id="title">🛒 Köp-lista</h1>
+        <button class="lang-switch" onclick="toggleLang()">Svenska</button>
+      </div>
+
+      <div class="add">
+        <input id="inp" placeholder="Paste or type…" autocomplete="off"/>
+        <button id="addBtn" onclick="handleAdd()">Add</button>
+      </div>
+
+      <ul id="list"></ul>
+
+      <button id="clearBtn" onclick="clearAll()">🗑 Rensa hela listan</button>
     </div>
-
-    <div class="top">
-      <h1 id="title">🛒 Köp-lista</h1>
-      <button class="lang-switch" onclick="toggleLang()">Svenska</button>
-    </div>
-
-    <div class="add">
-      <input id="inp" placeholder="Paste or type…" autocomplete="off"/>
-      <button id="addBtn" onclick="handleAdd()">Add</button>
-    </div>
-
-    <ul id="list"></ul>
-
-    <button id="clearBtn" onclick="clearAll()">🗑 Rensa hela listan</button>
   </div>
 
 <script src="script.js"></script>
 </body>
-
-</html>
