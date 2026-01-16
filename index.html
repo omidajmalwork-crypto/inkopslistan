@@ -1,38 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="utf-8"/>
-  <title>Grocery List</title>
+  <title>Grocery List + Weather</title>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <div class="card" id="card">
-      <!-- Mood-box -->
+
+      <!-- Top: Title + language -->
+      <div class="top">
+        <h1 id="title">🛒 Inköpslista</h1>
+        <button class="lang-switch" onclick="toggleLang()">English</button>
+      </div>
+
+      <!-- Weather -->
+      <div class="weather-box" id="weatherBox">
+        <div class="weather-icon">☀️</div>
+        <div class="weather-info">
+          <span id="temp">20°C</span>
+          <span id="city">Stockholm</span>
+        </div>
+      </div>
+
+      <!-- Mood -->
       <div class="mood-box" id="moodBox">
         <img id="sleep" src="assets/sleep.png" alt="sleeping" class="mood-img shown">
         <img id="angry" src="assets/angry.png" alt="angry" class="mood-img">
         <img id="happy" src="assets/happy.png" alt="happy" class="mood-img">
       </div>
 
-      <!-- Title + language switch -->
-      <div class="top">
-        <h1 id="title">🛒 Inköpslista</h1>
-        <button class="lang-switch" onclick="toggleLang()">English</button>
-      </div>
-
-      <!-- Add input + button -->
+      <!-- Add items -->
       <div class="add">
         <input id="inp" placeholder="Klistra in eller skriv…" autocomplete="off"/>
         <button id="addBtn" onclick="handleAdd()">Lägg till</button>
       </div>
 
-      <!-- Lista -->
+      <!-- List -->
       <ul id="list"></ul>
 
-      <!-- Clear button -->
+      <!-- Clear -->
       <button id="clearBtn" onclick="clearAll()">🗑 Rensa allt</button>
+
     </div>
   </div>
 
