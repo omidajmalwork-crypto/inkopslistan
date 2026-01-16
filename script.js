@@ -122,7 +122,7 @@ function updateMood(){
 }
 
 // -------- Weather --------
-const apiKey = 'DIN_API_KEY_HÄR'; // byt mot din nyckel
+const apiKey = 'ec26e3394984fa79ca02e62565631dbe'; // byt mot din nyckel
 const city = 'Stockholm';
 
 async function fetchWeather(){
