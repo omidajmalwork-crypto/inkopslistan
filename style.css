@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+:root{
+  --bg1:#8ca8b4;      /* mörkare blå */
+  --bg2:#ad9d6c;      /* mellanblå */
+  --bg3:#2c5364;      /* ljusare blå */
+
+  --glass:rgba(255,255,255,.08);
+  --highlight:#00ff88;
+  --danger:#ff4d4d;
+  --text:#e6faff;
+
+  /* TEMA-toningar INUTI boxen */
+  --sleep-tone:#a8b5c4;
+  --angry-tone:#f8a5a5;
+  --happy-tone:#fff3cd;
+}
+*{
+  box-sizing:border-box;margin:0;padding:0;
+  font-family:Inter,system-ui,sans-serif;
+}
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  display:flex;flex-direction:column;align-items:center;padding:1rem .5rem;
+}
+
+.card{
+  width:100%;max-width:420px;background:var(--glass);
+  border:2px solid transparent;border-radius:20px;
+  padding:1.2rem .9rem 1.5rem;box-shadow:0 20px 40px rgba(0,0,0,.1);
+  transition:border-color .4s, background .4s;
+}
+.card.sleep{border-color:var(--sleep-tone);background:var(--sleep-tone);}
+.card.angry{border-color:var(--angry-tone);background:var(--angry-tone);}
+.card.happy{border-color:var(--happy-tone);background:var(--happy-tone);}
+
+h1{
+  color:var(--text);text-align:center;margin-bottom:.4rem;font-size:1.4rem;letter-spacing:.5px;
+  background:linear-gradient(90deg,var(--highlight),#333);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.lang-switch{background:rgba(0, 0, 0, 0.08);color:var(--text);border:none;
+  padding:.35rem .7rem;border-radius:8px;cursor:pointer;font-size:.9rem;transition:transform .2s}
+.lang-switch:hover{transform:scale(1.05)}
+
+.add{display:flex;gap:.5rem;width:100%}
+
+.add input{flex:1 1 0;min-width:0;padding:.9rem 1rem;border:none;border-radius:12px;
+  background:#cacace;border:1px solid #080808;color:#060606;var(--text);font-size:1.1rem}
+.add button{flex:0 0 auto;padding:.9rem 1.3rem;border:none;border-radius:12px;
+  background:var(--highlight);color:#0b0b0b;font-weight:700;cursor:pointer;font-size:1.05rem;white-space:nowrap;transition:transform .2s}
+.add button:hover{transform:scale(1.05)}
+
+ul{list-style:none;margin-top:1.2rem;max-height:60vh;overflow:auto;padding-right:4px}
+li{
+  display:flex;align-items:center;gap:.7rem;
+  background:#ffffff;border:1px solid #e1e8ed;padding:.75rem .9rem;border-radius:12px;margin-bottom:.6rem;
+  animation:dropIn .5s ease;
+}
+@keyframes dropIn{
+  0%{transform:translateY(-30px) scale(.9);opacity:0}
+  70%{transform:translateY(5px)}
+  100%{transform:translateY(0) scale(1);opacity:1}
+}
+li span{flex:1;color:var(--text);font-size:1.05rem;transition:opacity .3s}
+li span.done{opacity:.45;text-decoration:line-through}
+
+.del{margin-right:.4rem;color:var(--danger);font-size:1.2rem;cursor:pointer;opacity:.8;transition:transform .2s}
+.del:hover{transform:scale(1.3) rotate(10deg)}
+.del:active{animation:crumble .4s ease forwards}
+@keyframes crumble{
+  0%{transform:scale(1) rotate(0)}
+  50%{transform:scale(1.4) rotate(-15deg);opacity:.5}
+  100%{transform:scale(0) rotate(20deg);opacity:0}
+}
+
+.toggle{position:relative;width:44px;height:22px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:#e1e8ed;border-radius:22px;cursor:pointer;transition:.3s}
+.slider:before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
+input:checked+.slider{background:var(--highlight)}
+input:checked+.slider:before{transform:translateX(22px)}
+
+/* --- Vit ram-box som tonas --- */
+.mood-box{
+  width:100%;height:170px;position:relative;overflow:hidden;
+  border-radius:14px;margin:-1rem 0 .5rem;
+  border:2px solid #e1e8ed;transition:border-color .4s, background .4s;
+}
+.mood-img{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  max-width:90%;max-height:90%;object-fit:contain;
+  transition:opacity .5s, transform .5s;
+}
+.mood-img:not(.shown){display:none;}
+.mood-img.shown{opacity:1;transform:translate(-50%,-50%) scale(1);}
+
+#clearBtn{
+  width:100%;margin-top:.8rem;padding:.6rem 1rem;
+  border:none;border-radius:10px;
+  background:var(--danger);
+  color:#fff;font-weight:600;font-size:.95rem;
+  cursor:pointer;transition:transform .2s, box-shadow .2s;
+  box-shadow:0 4px 12px rgba(231, 76, 60,.35);
+}
+#clearBtn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(231, 76, 60,.45);}
+#clearBtn:active{transform:translateY(0);box-shadow:0 2px 6px rgba(231, 76, 60,.35);}
+
+/* Tydligare list-rader */
+
+/* Mörkare, tydligare list-rader */
+ul{background:#ffffff;border:1px solid #b0bec5;border-radius:12px;padding:.4rem;}
+li{background:#f5f7fa;border:1px solid #cfd8dc;margin-bottom:.4rem;}
+li.done{background:#e8f5e9;border-color:#a5d6a7;}
+li span{color:#2c3e50;font-weight:500;}
